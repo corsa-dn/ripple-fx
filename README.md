@@ -1,4 +1,5 @@
 # ripple-fx
+[Download](https://github.com/corsa-dn/ripple-fx/archive/master.zip)
 
 Material design like click-effect on any element.
 
