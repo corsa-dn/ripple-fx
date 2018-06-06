@@ -25,14 +25,14 @@ let btn = new Ripple('.some-class', '#999'),
 
 ##### Methods: 
 ```js
-getColor() // returns current color of wave
+btn.color // returns current color of wave
 ```
 ```js
-setColor('color') // sets new color of wave
+btn.color = 'color' // sets new color of wave
 ```
 Example:
 ```js
 if(error){
-  btn.setColor('red')
+  btn.color = 'red'
 }
 ```
