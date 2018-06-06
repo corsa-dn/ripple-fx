@@ -1,29 +1,39 @@
 "use strict";
 
-function Ripple(elem, color) {
-  // входные параметры: целевой элемент, цвет волны
-  var btn = document.querySelectorAll(elem); // выбор целевых элементов DOM
-  btn.forEach(function (el) {
-    el.addEventListener('click', function (e) {
-      el.classList.add('ripple-fx')
-      // клик на элементе
-      var wave = document.createElement('div'); // создаем волну
-      wave.classList.add('ripple__wave'); // добавляем ей класс
-      wave.style.backgroundColor = color; // устанавливаем цвет со входных параметров по умолчанию #ffffff - белый
-      el.insertBefore(wave, null); // вставляем волну в целевой элемент
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+var Ripple = function Ripple(elem, color) {
+  var _this = this;
+  _classCallCheck(this, Ripple);
+  this.$elements = document.querySelectorAll(elem);
+  this.$color = color;
+  this.$elements.forEach(function (el) {
+    el.addEventListener("click", function (e) {
+      el.classList.add("ripple-fx");
+      var wave = document.createElement("div");
+      wave.classList.add("ripple__wave");
+      wave.style.backgroundColor = _this.$color;
+      el.insertBefore(wave, null);
       var click_pos = {
-        // собираем координаты клика для правильного позициорования волны
         x: e.clientX - el.offsetLeft,
         y: e.clientY - el.offsetTop
       };
-      wave.style.top = click_pos.y - wave.clientHeight / 2 + 'px'; // позиционируем волну внутри кнопки по Y
-      wave.style.left = click_pos.x - wave.clientWidth / 2 + 'px'; // позиционируем волну внутри кнопки по X
-      wave.style.animationPlayState = "running"; // запускаем анимацию
-      wave.addEventListener('animationend', function () {
-        // следим, когда анимация закончится
-        wave.style.animationPlayState = "stopped"; // останавливаем анимацию
-        el.removeChild(wave); // удаляем волну, которая прошла
+      wave.style.top = click_pos.y - wave.clientHeight / 2 + "px";
+      wave.style.left = click_pos.x - wave.clientWidth / 2 + "px";
+      wave.style.animationPlayState = "running";
+      wave.addEventListener("animationend", function () {
+        wave.style.animationPlayState = "stopped";
+        el.removeChild(wave);
       });
     });
   });
-}
+  this.getColor = function () {
+    return _this.$color;
+  };
+  this.setColor = function (newColor) {
+    _this.$color = newColor;
+  };
+};
