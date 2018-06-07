@@ -19,9 +19,9 @@ function () {
 
     this.$color = color;
     this.$elements.forEach(function (el) {
+      el.classList.add("ripple-fx");
       el.addEventListener("click", function (e) {
         // клик на элементе
-        el.classList.add("ripple-fx");
         var wave = document.createElement("div"); // создаем волну
 
         wave.classList.add("ripple__wave"); // добавляем ей класс
