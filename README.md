@@ -21,7 +21,7 @@ Material design like click-effect on any element.
 #### 3. Init from your js file or in new <script> tag:
 
 ```js
-// new Ripple('jquery-like-selector', 'color': string, duration: number);
+// new Ripple('jquery-like-selector': string, 'color': string, duration: number);
 // 3-rd argument not required, by default it sets by 0.77s, but if you want ... 
 let btn = new Ripple('.some-class', '#999', 0.5),
 ```
