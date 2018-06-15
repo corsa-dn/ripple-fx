@@ -12,12 +12,15 @@ function () {
   function Ripple(elem, color) {
     var _this = this;
 
+    var dur = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '0.77';
+
     _classCallCheck(this, Ripple);
 
     // входные параметры: целевой элемент, цвет волны
     this.$elements = document.querySelectorAll(elem); // выбор целевых элементов DOM
 
     this.$color = color;
+    this.$duration = dur;
     this.$elements.forEach(function (el) {
       el.classList.add("ripple-fx");
       el.addEventListener("click", function (e) {
@@ -27,6 +30,8 @@ function () {
         wave.classList.add("ripple__wave"); // добавляем ей класс
 
         wave.style.backgroundColor = _this.$color; // устанавливаем цвет со входных параметров по умолчанию #ffffff - белый
+
+        wave.style.animationDuration = _this.$duration + 's'; // устанавливаем длительность со входных параметров по умолчанию 0.77s
 
         el.insertBefore(wave, null); // вставляем волну в целевой элемент
 
